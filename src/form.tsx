@@ -1,4 +1,9 @@
 import { useState, useEffect } from "react";
+
+interface OfficeData {
+  id: string;
+  officeType: string;
+}
 import ElectricBillForm from "./components/electric";
 import CrimeReportForm from "./components/crime";
 import FleetManagementForm from "./components/fleetManagement";
@@ -40,24 +45,28 @@ const allTabs = [
   },
 ];
 
-const FormTabs = () => {
+const FormTabs = ({ id, onback }: { id: string; onback: () => void }) => {
   const [activeTab, setActiveTab] = useState(0);
   const [showTabs, setShowTabs] = useState(false);
   const [tabs, setTabs] = useState(allTabs);
-  const [officeTypee, setOfficeType] = useState();
+  const [officeType, setOfficeType] = useState<string>();
   const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
-    const officeData = localStorage.getItem("officeData");
-    const parsedData = officeData ? JSON.parse(officeData) : {};
-    setOfficeType(parsedData.officeType);
-    const officeType = parsedData.officeType || "all";
+    const officeData = localStorage.getItem("offices");
+    const parsedData = officeData ? JSON.parse(officeData) : [];
+    const office: OfficeData | undefined = parsedData.find(
+      (office: OfficeData) => office.id === id
+    );
+    const officeType = office ? office.officeType : "all";
+    console.log(parsedData);
+    setOfficeType(officeType);
     const filteredTabs = allTabs.filter((tab) =>
       tab.officeTypes.includes(officeType)
     );
     setTabs(filteredTabs);
     setActiveTab(0); // Set the active tab to the first filtered tab
-  }, []);
+  }, [id]);
 
   const handleTabClick = (index: number) => {
     setActiveTab(index);
@@ -67,7 +76,7 @@ const FormTabs = () => {
   return (
     <div className="mx-auto">
       <h1 className="font-bold text-2xl text-center">
-        Office Type: <span className="uppercase">{officeTypee}</span>
+        Office Type: <span className="uppercase">{officeType}</span>
       </h1>
       <button
         className="block md:hidden absolute top-1 right-2 p-1 min-w-[2em] bg-blue-600 text-white rounded-lg mb-4"
@@ -84,7 +93,10 @@ const FormTabs = () => {
       >
         <p
           className="absolute right-10 underline text-blue-500 cursor-pointer"
-          onClick={() => { localStorage.removeItem("officeData");  setShowForm(true)}}
+          onClick={() => {
+            setShowForm(true);
+            onback();
+          }}
         >
           create another office
         </p>

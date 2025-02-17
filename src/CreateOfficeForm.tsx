@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 function CreateOfficeForm({ onClose }: { onClose: () => void }) {
   const [officeType, setOfficeType] = useState("");
@@ -30,7 +31,8 @@ function CreateOfficeForm({ onClose }: { onClose: () => void }) {
       return;
     }
 
-    const officeData = {
+    const newOfficeData = {
+      id: uuidv4(), // Generate a unique ID for the office
       officeType,
       address: { region, district, street },
       phoneNumber,
@@ -38,12 +40,17 @@ function CreateOfficeForm({ onClose }: { onClose: () => void }) {
       manager: { name: managerName, email: managerEmail, phone: managerPhone },
     };
 
-    localStorage.setItem("officeData", JSON.stringify(officeData));
+    const existingOffices = localStorage.getItem("offices");
+    const offices = existingOffices ? JSON.parse(existingOffices) : [];
+    offices.push(newOfficeData);
+    localStorage.setItem("offices", JSON.stringify(offices));
+
     setSuccessMessage("Office created successfully!");
     setErrorMessage("");
     setTimeout(() => {
       setSuccessMessage("");
       onClose();
+      window.location.reload();
     }, 3000);
   };
 
@@ -170,7 +177,7 @@ function CreateOfficeForm({ onClose }: { onClose: () => void }) {
           </div>
 
           {/* Conditionally Display Forms Based on Office Type */}
-        `  {/* {officeType && (
+          {/* {officeType && (
             <div className="mb-4">
               <h3 className="text-lg font-semibold">Available Forms:</h3>
               <ul className="list-disc pl-5">
@@ -181,7 +188,7 @@ function CreateOfficeForm({ onClose }: { onClose: () => void }) {
                 ))}
               </ul>
             </div>
-          )}` */}
+          )} */}
 
           {/* Buttons */}
           <div className="flex justify-end">
