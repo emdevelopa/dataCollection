@@ -98,7 +98,7 @@ const FormTabs = ({ id, onback }: { id: string; onback: () => void }) => {
             onback();
           }}
         >
-          create another office
+          Home
         </p>
         {tabs.map((tab, index) => (
           <button
