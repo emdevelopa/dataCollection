@@ -1,13 +1,13 @@
 import { useState } from "react";
-import ElectricBillForm from "./components/electric";
-import CrimeReportForm from "./components/crime";
-import FleetManagementForm from "./components/fleetManagement";
+import BillForm from "./components/bill";
 import BirthAndDeathForm from "./components/birthAndDeath";
 import BirthDetailsForm from "./components/birthDetails";
+import CrimeReportForm from "./components/crime";
 import DeathDetailsForm from "./components/deathDetails";
+import FleetManagementForm from "./components/fleetManagement";
 
 const tabs = [
-  { name: "Electric Bill", component: <ElectricBillForm /> },
+  { name: "Bill", component: <BillForm /> },
   { name: "Crime Report", component: <CrimeReportForm /> },
   { name: "Fleet Management", component: <FleetManagementForm /> },
   { name: "Birth & Death", component: <BirthAndDeathForm /> },
