@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
-export default function ElectricBillForm() {
+export default function BillForm() {
   const [formData, setFormData] = useState({
+    billType: "",
     date: "",
     file: null,
     accountNumber: "",
@@ -29,8 +30,19 @@ export default function ElectricBillForm() {
       onSubmit={handleSubmit}
     >
       <h2 className="text-2xl font-bold mb-4 text-center text-gray-700">
-        Electric Bill Form
+        Bill Form
       </h2>
+      <div className="mb-4 flex flex-col items-start ">
+        <select
+          name="billType"
+          id="billType"
+          className="w-full p-3 border border-black rounded-lg focus:ring focus:ring-blue-300"
+        >
+          <option value="">Select a bill type</option>
+          <option value="electricityBill">Electricity bill</option>
+          <option value="waterBill">Water bill</option>
+        </select>
+      </div>
       <div className="mb-4 flex flex-col items-start ">
         <input
           type="date"

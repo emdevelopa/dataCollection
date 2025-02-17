@@ -1,21 +1,18 @@
 import { useState, useEffect } from "react";
-
-interface OfficeData {
-  id: string;
-  officeType: string;
-}
 import ElectricBillForm from "./components/electric";
 import CrimeReportForm from "./components/crime";
 import FleetManagementForm from "./components/fleetManagement";
 import BirthAndDeathForm from "./components/birthAndDeath";
 import BirthDetailsForm from "./components/birthDetails";
+import CrimeReportForm from "./components/crime";
 import DeathDetailsForm from "./components/deathDetails";
+import FleetManagementForm from "./components/fleetManagement";
 import CreateOfficeForm from "./CreateOfficeForm";
 
 const allTabs = [
   {
     name: "Electric Bill",
-    component: <ElectricBillForm />,
+    component: <BillForm />,
     officeTypes: ["electric", "all"],
   },
   {
