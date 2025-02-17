@@ -1,16 +1,16 @@
-import { useState, useEffect } from "react";
-import ElectricBillForm from "./components/electric";
-import CrimeReportForm from "./components/crime";
-import FleetManagementForm from "./components/fleetManagement";
+import { useEffect, useState } from "react";
+import BillForm from "./components/bill";
 import BirthAndDeathForm from "./components/birthAndDeath";
 import BirthDetailsForm from "./components/birthDetails";
+import CrimeReportForm from "./components/crime";
 import DeathDetailsForm from "./components/deathDetails";
+import FleetManagementForm from "./components/fleetManagement";
 import CreateOfficeForm from "./CreateOfficeForm";
 
 const allTabs = [
   {
     name: "Electric Bill",
-    component: <ElectricBillForm />,
+    component: <BillForm />,
     officeTypes: ["electric", "all"],
   },
   {
