@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 import BillForm from "./components/bill";
+import BirthAndDeathForm from "./components/birthAndDeath";
+import BirthDetailsForm from "./components/birthDetails";
+import CrimeReportForm from "./components/crime";
+import FleetManagementForm from "./components/fleetManagement";
 
 
 interface OfficeData {
   id: string;
   officeType: string;
 }
-import ElectricBillForm from "./components/electric";
-import CrimeReportForm from "./components/crime";
-import FleetManagementForm from "./components/fleetManagement";
-import BirthAndDeathForm from "./components/birthAndDeath";
-import BirthDetailsForm from "./components/birthDetails";
 
 import DeathDetailsForm from "./components/deathDetails";
 

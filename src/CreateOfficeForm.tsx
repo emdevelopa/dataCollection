@@ -51,7 +51,7 @@ function CreateOfficeForm({ onClose }: { onClose: () => void }) {
       setSuccessMessage("");
       onClose();
       window.location.reload();
-    }, 3000);
+    }, 500);
   };
 
   // Conditional logic to show/hide inputs based on office type

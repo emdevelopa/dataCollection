@@ -1,9 +1,7 @@
-import { useState, useEffect } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import FormData from "./form";
-import CreateOfficeForm from "./CreateOfficeForm";
+import { useEffect, useState } from "react";
 import "./App.css";
+import CreateOfficeForm from "./CreateOfficeForm";
+import FormData from "./form";
 
 function App() {
   const [showForm, setShowForm] = useState(false);
