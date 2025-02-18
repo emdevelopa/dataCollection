@@ -1,9 +1,17 @@
+<<<<<<< HEAD
 import { useEffect, useState } from "react";
+=======
+// import { useState } from "react";
+// import reactLogo from "./assets/react.svg";
+// import viteLogo from "/vite.svg";
+import FormData from "./form";
+>>>>>>> origin/formSetUp
 import "./App.css";
 import CreateOfficeForm from "./CreateOfficeForm";
 import FormData from "./form";
 
 function App() {
+<<<<<<< HEAD
   const [showForm, setShowForm] = useState(false);
   const [officeId, setOfficeId] = useState<string | null>(null);
   interface Office {
@@ -35,6 +43,9 @@ function App() {
   }, []);
 
   if (officeId) return <FormData id={officeId} onback={()=>setOfficeId("")} />;
+=======
+  // const [count, setCount] = useState(0);
+>>>>>>> origin/formSetUp
 
   return (
     <>
