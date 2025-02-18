@@ -1,23 +1,75 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BillForm from "./components/bill";
 import BirthAndDeathForm from "./components/birthAndDeath";
 import BirthDetailsForm from "./components/birthDetails";
 import CrimeReportForm from "./components/crime";
-import DeathDetailsForm from "./components/deathDetails";
 import FleetManagementForm from "./components/fleetManagement";
 
-const tabs = [
-  { name: "Bill", component: <BillForm /> },
-  { name: "Crime Report", component: <CrimeReportForm /> },
-  { name: "Fleet Management", component: <FleetManagementForm /> },
-  { name: "Birth & Death", component: <BirthAndDeathForm /> },
-  { name: "Birth Details", component: <BirthDetailsForm /> },
-  { name: "Death Details", component: <DeathDetailsForm /> },
+
+interface OfficeData {
+  id: string;
+  officeType: string;
+}
+
+import DeathDetailsForm from "./components/deathDetails";
+
+import CreateOfficeForm from "./CreateOfficeForm";
+
+const allTabs = [
+  {
+    name: "Electric Bill",
+    component: <BillForm />,
+    officeTypes: ["electric", "all"],
+  },
+  {
+    name: "Crime Report",
+    component: <CrimeReportForm />,
+    officeTypes: ["police", "all"],
+  },
+  {
+    name: "Fleet Management",
+    component: <FleetManagementForm />,
+    officeTypes: ["fleet", "all"],
+  },
+  {
+    name: "Birth & Death",
+    component: <BirthAndDeathForm />,
+    officeTypes: ["hospital", "all"],
+  },
+  {
+    name: "Birth Details",
+    component: <BirthDetailsForm />,
+    officeTypes: ["hospital", "all"],
+  },
+  {
+    name: "Death Details",
+    component: <DeathDetailsForm />,
+    officeTypes: ["hospital", "all"],
+  },
 ];
 
-const FormTabs = () => {
+const FormTabs = ({ id, onback }: { id: string; onback: () => void }) => {
   const [activeTab, setActiveTab] = useState(0);
   const [showTabs, setShowTabs] = useState(false);
+  const [tabs, setTabs] = useState(allTabs);
+  const [officeType, setOfficeType] = useState<string>();
+  const [showForm, setShowForm] = useState(false);
+
+  useEffect(() => {
+    const officeData = localStorage.getItem("offices");
+    const parsedData = officeData ? JSON.parse(officeData) : [];
+    const office: OfficeData | undefined = parsedData.find(
+      (office: OfficeData) => office.id === id
+    );
+    const officeType = office ? office.officeType : "all";
+    console.log(parsedData);
+    setOfficeType(officeType);
+    const filteredTabs = allTabs.filter((tab) =>
+      tab.officeTypes.includes(officeType)
+    );
+    setTabs(filteredTabs);
+    setActiveTab(0); // Set the active tab to the first filtered tab
+  }, [id]);
 
   const handleTabClick = (index: number) => {
     setActiveTab(index);
@@ -26,6 +78,9 @@ const FormTabs = () => {
 
   return (
     <div className="mx-auto">
+      <h1 className="font-bold text-2xl text-center">
+        Office Type: <span className="uppercase">{officeType}</span>
+      </h1>
       <button
         className="block md:hidden absolute top-1 right-2 p-1 min-w-[2em] bg-blue-600 text-white rounded-lg mb-4"
         onClick={() => setShowTabs(!showTabs)}
@@ -39,6 +94,15 @@ const FormTabs = () => {
             : "hidden"
         } md:flex md:flex-row border-b lg:flex lg:justify-center lg:items-center`}
       >
+        <p
+          className="absolute right-10 underline text-blue-500 cursor-pointer"
+          onClick={() => {
+            setShowForm(true);
+            onback();
+          }}
+        >
+          Home
+        </p>
         {tabs.map((tab, index) => (
           <button
             key={index}
@@ -56,6 +120,7 @@ const FormTabs = () => {
       <div className="p-6 bg-white shadow-m mt-4 rounded-lg">
         {tabs[activeTab].component}
       </div>
+      {showForm && <CreateOfficeForm onClose={() => setShowForm(false)} />}
     </div>
   );
 };
