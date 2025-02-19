@@ -58,19 +58,19 @@ function CreateOfficeForm({ onClose }: { onClose: () => void }) {
   };
 
   // Conditional logic to show/hide inputs based on office type
-  const getAvailableForms = () => {
-    switch (officeType) {
-      case "hospital":
-        return ["Patient Records", "Billing"];
-      case "police":
-        return ["Crime Reports", "Lost & Found"];
-      case "ministry":
-      case "district":
-        return ["Government Records", "Public Services"];
-      default:
-        return [];
-    }
-  };
+  // const getAvailableForms = () => {
+  //   switch (officeType) {
+  //     case "hospital":
+  //       return ["Patient Records", "Billing"];
+  //     case "police":
+  //       return ["Crime Reports", "Lost & Found"];
+  //     case "ministry":
+  //     case "district":
+  //       return ["Government Records", "Public Services"];
+  //     default:
+  //       return [];
+  //   }
+  // };
 
   return (
     <div className="fixed overflow-auto inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
