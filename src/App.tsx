@@ -1,18 +1,17 @@
-import { useState, useEffect } from "react";
-import { useNavigate, Routes, Route, useLocation } from "react-router-dom";
-import FormData from "./form";
-import CreateOfficeForm from "./CreateOfficeForm";
-import SignIn from "./accounts/signIn";
+import { useEffect, useState } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Register from "./accounts/register";
+import SignIn from "./accounts/signIn";
 import "./App.css";
+import CreateOfficeForm from "./CreateOfficeForm";
+import FormData from "./form";
 
 function App() {
   const [showForm, setShowForm] = useState(false);
   const [officeId, setOfficeId] = useState<string | null>(null);
   const navigate = useNavigate();
-  const location = useLocation();
   const [username, setUsername] = useState("");
-  
+
   // const user = localStorage.getItem("user")
 
   interface Office {
@@ -38,7 +37,7 @@ function App() {
     const storedUser = localStorage.getItem("user");
     if (!storedUser) {
       // navigate("/accounts/signIn");
-      navigate("/accounts/register");
+      // navigate("/accounts/register");
     } else {
       const user = JSON.parse(storedUser);
       if (user.office) {
@@ -46,10 +45,16 @@ function App() {
         setOffices(user.office);
       }
     }
+    console.log(storedUser);
   }, [navigate]);
 
   if (officeId)
     return <FormData id={officeId} onback={() => setOfficeId("")} />;
+
+  const handleLogout = () => {
+    localStorage.setItem("user", "");
+    navigate("/accounts/signIn");
+  };
 
   return (
     <Routes>
@@ -60,8 +65,13 @@ function App() {
         element={
           <>
             {username && (
-              <div className="text-center text-2xl font-bold mb-4">
-                Welcome, {username}!
+              <div className="flex justify-between p-3">
+                <span className="text-center text-2xl font-bold">
+                  Welcome, {username}!
+                </span>
+                <a href="#" onClick={handleLogout}>
+                  logout
+                </a>
               </div>
             )}
             <section className="flex gap-6 p-6">

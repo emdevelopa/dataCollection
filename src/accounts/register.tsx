@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 
 const Register = () => {
+  const navigate = useNavigate()
   const [user, setUser] = useState({
     id: uuidv4(),
     fullname: "",
@@ -24,6 +24,7 @@ const Register = () => {
     e.preventDefault();
     localStorage.setItem("user", JSON.stringify(user));
     setMessage("User registered successfully!");
+    navigate("/accounts/signIn")
   };
 
   return (
