@@ -3,23 +3,27 @@ import BillForm from "./components/bill";
 import BirthAndDeathForm from "./components/birthAndDeath";
 import BirthDetailsForm from "./components/birthDetails";
 import CrimeReportForm from "./components/crime";
+import DeathDetailsForm from "./components/deathDetails";
 import FleetManagementForm from "./components/fleetManagement";
-
+import CreateOfficeForm from "./CreateOfficeForm";
 
 interface OfficeData {
   id: string;
   officeType: string;
 }
 
-import DeathDetailsForm from "./components/deathDetails";
-
-import CreateOfficeForm from "./CreateOfficeForm";
-
 const allTabs = [
   {
-    name: "Electric Bill",
+    name: "Bill",
     component: <BillForm />,
-    officeTypes: ["electric", "all"],
+    officeTypes: [
+      "electric",
+      "hospital",
+      "police",
+      "Ministry",
+      "all",
+      "District Office",
+    ],
   },
   {
     name: "Crime Report",
@@ -29,7 +33,14 @@ const allTabs = [
   {
     name: "Fleet Management",
     component: <FleetManagementForm />,
-    officeTypes: ["fleet", "all"],
+    officeTypes: [
+      "fleet",
+      "hospital",
+      "police",
+      "all",
+      "Ministry",
+      "District Office",
+    ],
   },
   {
     name: "Birth & Death",
@@ -56,13 +67,12 @@ const FormTabs = ({ id, onback }: { id: string; onback: () => void }) => {
   const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
-    const officeData = localStorage.getItem("offices");
-    const parsedData = officeData ? JSON.parse(officeData) : [];
-    const office: OfficeData | undefined = parsedData.find(
+    const storedUser = localStorage.getItem("user");
+    const parsedUser = storedUser ? JSON.parse(storedUser) : null;
+    const office = parsedUser?.office.find(
       (office: OfficeData) => office.id === id
     );
     const officeType = office ? office.officeType : "all";
-    console.log(parsedData);
     setOfficeType(officeType);
     const filteredTabs = allTabs.filter((tab) =>
       tab.officeTypes.includes(officeType)

@@ -40,10 +40,13 @@ function CreateOfficeForm({ onClose }: { onClose: () => void }) {
       manager: { name: managerName, email: managerEmail, phone: managerPhone },
     };
 
-    const existingOffices = localStorage.getItem("offices");
-    const offices = existingOffices ? JSON.parse(existingOffices) : [];
-    offices.push(newOfficeData);
-    localStorage.setItem("offices", JSON.stringify(offices));
+    const existingUser = localStorage.getItem("user");
+    const user = existingUser ? JSON.parse(existingUser) : null;
+    if (user) {
+      // Adjust this to dynamically get the current user
+      user.office.push(newOfficeData);
+      localStorage.setItem("user", JSON.stringify(user));
+    }
 
     setSuccessMessage("Office created successfully!");
     setErrorMessage("");
