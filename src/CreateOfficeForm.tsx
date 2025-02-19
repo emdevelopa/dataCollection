@@ -42,7 +42,7 @@ function CreateOfficeForm({ onClose }: { onClose: () => void }) {
 
     const existingUser = localStorage.getItem("user");
     const user = existingUser ? JSON.parse(existingUser) : null;
-    if (user && user.username === "EM") {
+    if (user) {
       // Adjust this to dynamically get the current user
       user.office.push(newOfficeData);
       localStorage.setItem("user", JSON.stringify(user));
@@ -54,7 +54,7 @@ function CreateOfficeForm({ onClose }: { onClose: () => void }) {
       setSuccessMessage("");
       onClose();
       window.location.reload();
-    }, 3000);
+    }, 500);
   };
 
   // Conditional logic to show/hide inputs based on office type
