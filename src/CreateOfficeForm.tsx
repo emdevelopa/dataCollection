@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import AppSelect from "./components/Select";
+import { regions } from "./regions";
 
 function CreateOfficeForm({ onClose }: { onClose: () => void }) {
   const [officeType, setOfficeType] = useState("");
@@ -71,6 +73,7 @@ function CreateOfficeForm({ onClose }: { onClose: () => void }) {
   //       return [];
   //   }
   // };
+  // console.log(regions.find((item:any) => item.value === region)?.districts);
 
   return (
     <div className="fixed overflow-auto inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
@@ -103,23 +106,25 @@ function CreateOfficeForm({ onClose }: { onClose: () => void }) {
 
           {/* Address Fields */}
           <div className="mb-4">
-            <input
+            {/* <input
               type="text"
               value={region}
               onChange={(e) => setRegion(e.target.value)}
               placeholder="Region"
               className="w-full p-2 border border-gray-300 rounded"
-            />
+            /> */}
+            <AppSelect id="region" name="region" value={region} setValue={setRegion} options={regions} />
           </div>
-          <div className="mb-4">
-            <input
+          {region && <div className="mb-4">
+            {/* <input
               type="text"
               value={district}
               onChange={(e) => setDistrict(e.target.value)}
               placeholder="District"
               className="w-full p-2 border border-gray-300 rounded"
-            />
-          </div>
+              /> */}
+            <AppSelect id="district" name="district" value={district} setValue={setDistrict} options={regions.find((item:any) => item.value === region)?.districts || []} />
+          </div>}
           <div className="mb-4">
             <input
               type="text"

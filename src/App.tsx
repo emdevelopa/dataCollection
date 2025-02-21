@@ -11,7 +11,6 @@ function App() {
   const [officeId, setOfficeId] = useState<string | null>(null);
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
-
   // const user = localStorage.getItem("user")
 
   interface Office {
