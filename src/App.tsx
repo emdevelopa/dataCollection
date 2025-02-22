@@ -3,6 +3,8 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import Register from "./accounts/register";
 import SignIn from "./accounts/signIn";
 import "./App.css";
+import NavBar from "./components/Nav";
+import OfficeCard from "./components/OfficeCard";
 import CreateOfficeForm from "./CreateOfficeForm";
 import FormData from "./form";
 
@@ -63,14 +65,15 @@ function App() {
         element={
           <>
             {username && (
-              <div className="flex justify-between p-3">
-                <span className="text-center text-2xl font-bold">
-                  Welcome, {username}!
-                </span>
-                <a href="#" onClick={handleLogout}>
-                  logout
-                </a>
-              </div>
+              // <div className="flex justify-between p-3">
+              //   <span className="text-center text-2xl font-bold">
+              //     Welcome, {username}!
+              //   </span>
+              //   <a href="#" onClick={handleLogout}>
+              //     logout
+              //   </a>
+              // </div>
+              <NavBar username={username} handleLogout={handleLogout} setShowForm={setShowForm} />
             )}
             <section className="flex gap-6 p-6">
               {offices.length === 0 && username ? (
@@ -79,26 +82,27 @@ function App() {
                 </h1>
               ) : (
                 offices.map((office, index) => (
-                  <div key={index} className="p-4 border rounded-lg shadow-md">
-                    <h2 className="text-xl font-bold uppercase">
-                      {office.officeType}
-                    </h2>
-                    <p>Region: {office.address.region}</p>
-                    <p>District: {office.address.district}</p>
-                    <p>Street: {office.address.street}</p>
-                    <p>Phone: {office.phoneNumber}</p>
-                    <p>Email: {office.email}</p>
-                    <h3 className="font-semibold mt-2">Manager Details:</h3>
-                    <p>Name: {office.manager.name}</p>
-                    <p>Email: {office.manager.email}</p>
-                    <p>Phone: {office.manager.phone}</p>
-                    <button
-                      className="mt-4 bg-green-500 text-white px-3 py-1 rounded-lg shadow-md hover:bg-green-600"
-                      onClick={() => setOfficeId(office?.id)}
-                    >
-                      Open Office
-                    </button>
-                  </div>
+                  <OfficeCard key={index} data={office} setOfficeId={setOfficeId} />
+                  // <div key={index} className="p-4 border rounded-lg shadow-md">
+                  //   <h2 className="text-xl font-bold uppercase">
+                  //     {office.officeType}
+                  //   </h2>
+                  //   <p>Region: {office.address.region}</p>
+                  //   <p>District: {office.address.district}</p>
+                  //   <p>Street: {office.address.street}</p>
+                  //   <p>Phone: {office.phoneNumber}</p>
+                  //   <p>Email: {office.email}</p>
+                  //   <h3 className="font-semibold mt-2">Manager Details:</h3>
+                  //   <p>Name: {office.manager.name}</p>
+                  //   <p>Email: {office.manager.email}</p>
+                  //   <p>Phone: {office.manager.phone}</p>
+                  //   <button
+                  //     className="mt-4 bg-green-500 text-white px-3 py-1 rounded-lg shadow-md hover:bg-green-600"
+                  //     onClick={() => setOfficeId(office?.id)}
+                  //   >
+                  //     Open Office
+                  //   </button>
+                  // </div>
                 ))
               )}
             </section>
