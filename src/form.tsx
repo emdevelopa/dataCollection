@@ -73,7 +73,6 @@ const FormTabs = ({ id, onback }: { id: string; onback: () => void }) => {
       (office: OfficeData) => office.id === id
     );
     const officeType = office ? office.officeType : "all";
-    console.log(parsedUser);
     setOfficeType(officeType);
     const filteredTabs = allTabs.filter((tab) =>
       tab.officeTypes.includes(officeType)
