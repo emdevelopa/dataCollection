@@ -6,9 +6,15 @@ export default function FleetManagementForm() {
     endMiles: "",
     date: "",
     amountOfFuel: "",
+    volumeOfFuel: "",
     repairsDetails: "",
     repairsCost: "",
-    anyCost: "",
+    repairPart: "",
+    repairLocation: "",
+    repairContact: "",
+    receiptNumber: "",
+    workmanship: "",
+    fleetType: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,6 +39,28 @@ export default function FleetManagementForm() {
         Fleet Management
       </h2>
       <div className="mb-4 flex flex-col items-start">
+      <select
+          name="fleetType"
+          id="fleetType"
+          className="w-full p-3 border border-black rounded-lg focus:ring focus:ring-blue-300"
+          onChange={(e) => handleChange(e as any)}
+        >
+          <option value="">Select a record type</option>
+          <option value="fuel">Fuel</option>
+          <option value="mileage">Mileage</option>
+          <option value="repairs">Repairs</option>
+        </select>
+      </div>
+      <div className="mb-4 flex flex-col items-start">
+        <input
+          type="date"
+          name="date"
+          className="w-full p-3 border border-black rounded-lg focus:ring focus:ring-blue-300"
+          onChange={handleChange}
+        />
+      </div>
+      {formData.fleetType === "mileage" && <>
+      <div className="mb-4 flex flex-col items-start">
         <input
           type="text"
           name="startMiles"
@@ -50,20 +78,70 @@ export default function FleetManagementForm() {
           onChange={handleChange}
         />
       </div>
-      <div className="mb-4 flex flex-col items-start">
-        <input
-          type="date"
-          name="date"
-          className="w-full p-3 border border-black rounded-lg focus:ring focus:ring-blue-300"
-          onChange={handleChange}
-        />
-      </div>
+      </>}
+      {formData.fleetType === "fuel" &&<>
       <div className="mb-4 flex flex-col items-start">
         <input
           type="text"
           name="amountOfFuel"
           className="w-full p-3 border border-black rounded-lg focus:ring focus:ring-blue-300"
           placeholder="Amount of fuel"
+          onChange={handleChange}
+        />
+      </div>
+      <div className="mb-4 flex flex-col items-start">
+        <input
+          type="text"
+          name="volumeOfFuel"
+          className="w-full p-3 border border-black rounded-lg focus:ring focus:ring-blue-300"
+          placeholder="Volume of fuel"
+          onChange={handleChange}
+        />
+      </div>
+      <div className="mb-4 flex flex-col items-start">
+        <input
+          type="text"
+          name="receiptNumber"
+          className="w-full p-3 border border-black rounded-lg focus:ring focus:ring-blue-300"
+          placeholder="Receipt Number"
+          onChange={handleChange}
+        />
+      </div>
+      </>}
+      {formData.fleetType === "repairs" &&<>
+      <div className="mb-4 flex flex-col items-start">
+        <input
+          type="text"
+          name="repairPart"
+          className="w-full p-3 border border-black rounded-lg focus:ring focus:ring-blue-300"
+          placeholder="Repair Part"
+          onChange={handleChange}
+        />
+      </div>
+      <div className="mb-4 flex flex-col items-start">
+        <input
+          type="text"
+          name="repairLocation"
+          className="w-full p-3 border border-black rounded-lg focus:ring focus:ring-blue-300"
+          placeholder="Repair Location"
+          onChange={handleChange}
+        />
+      </div>
+      <div className="mb-4 flex flex-col items-start">
+        <input
+          type="text"
+          name="repairContact"
+          className="w-full p-3 border border-black rounded-lg focus:ring focus:ring-blue-300"
+          placeholder="Repair Contact"
+          onChange={handleChange}
+        />
+      </div>
+      <div className="mb-4 flex flex-col items-start">
+        <input
+          type="text"
+          name="receiptNumber"
+          className="w-full p-3 border border-black rounded-lg focus:ring focus:ring-blue-300"
+          placeholder="Receipt Number"
           onChange={handleChange}
         />
       </div>
@@ -88,12 +166,13 @@ export default function FleetManagementForm() {
       <div className="mb-4 flex flex-col items-start">
         <input
           type="text"
-          name="anyCost"
+          name="workmanship"
           className="w-full p-3 border border-black rounded-lg focus:ring focus:ring-blue-300"
-          placeholder="Any cost"
+          placeholder="Workmanship"
           onChange={handleChange}
         />
       </div>
+      </>}
       <button
         type="submit"
         className="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 focus:ring focus:ring-blue-300"
