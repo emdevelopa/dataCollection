@@ -33,6 +33,7 @@ const Register = () => {
       onSubmit={handleSubmit}
       className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md"
     >
+      <h2 className="text-2xl font-bold mb-4">Sign up</h2>
       <div className="mb-4">
         <label className="block text-gray-700 text-sm font-bold mb-2">
           Full Name:
