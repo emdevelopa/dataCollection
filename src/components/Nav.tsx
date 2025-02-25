@@ -10,7 +10,7 @@ export default function NavBar({
     <>
       <nav>
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-          <div className="relative flex h-16 items-center justify-between">
+          <div className="relative flex h-5 items-center justify-between">
             <div className="inset-y-0 left-0 flex items-center fontWeight:bold">
             <h2 style={{textTransform:"uppercase"}} className="text-2xl/10 font-bold text-gray-900 sm:truncate sm:text-2xl sm:tracking-tight text-transform:uppercase">Record Data</h2>
             </div>

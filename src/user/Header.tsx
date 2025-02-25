@@ -18,7 +18,7 @@ const Header: React.FC<HeaderProps> = ({
 
   return (
     <div>
-      <header className="header flex items-center justify-between p-2 px-[4em] bg-white text-black border border-[gray] rounded-[5em] md:flex-row flex-col md:items-center">
+      <header className="header flex items-center justify-between p-2 px-[4em] bg-white text-black border border-[gray] rounded-lg md:flex-row flex-col md:items-center">
         <div className="flex justify-between w-full md:w-auto lg:hidden">
           <div></div>
 
@@ -48,7 +48,7 @@ const Header: React.FC<HeaderProps> = ({
           <img
             src="https://plus.unsplash.com/premium_photo-1689977927774-401b12d137d6?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Profile"
-            className="profile-image w-20 h-20 object-cover rounded-full"
+            className="profile-image w-10 h-10 object-cover rounded-full"
           />
 
           {!username ? (
@@ -62,7 +62,7 @@ const Header: React.FC<HeaderProps> = ({
               </button>
             </>
           ) : (
-            <>
+            <div className="flex justify-between items-center gap-2">
               <button
                 className="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-600"
                 onClick={() => setShowForm(true)}
@@ -77,7 +77,7 @@ const Header: React.FC<HeaderProps> = ({
                 <span className=""></span>
                 <span>logout</span>
               </button>
-            </>
+            </div>
           )}
         </div>
 

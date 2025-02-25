@@ -6,27 +6,25 @@ export default function OfficeCard({
   setOfficeId: any;
 }) {
   return (
-    <div className="flex flex-col items-cente text-l">
-      <div className="w-full rounded-lg border shadow-sm overflow-hidden shadow-blue-950/25 max-w-xs">
+    <div className="flex flex-row items-center text-l w-full bg-gray-50 rounded-lg">
+      <div className="w-full rounded-lg shadow-sm overflow-hidden shadow-blue-950/25 text-black">
         <div className="w-[calc(100%-16px)] h-max rounded m-2 py-1 text-center">
           <h2
             style={{ textTransform: "uppercase" }}
-            className="text-2xl/7 font-bold text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight text-transform:uppercase"
+            className="text-sm font-bold sm:truncate sm:text-l sm:tracking-tight text-transform:uppercase"
           >
             {data?.officeType}
           </h2>
         </div>
-        <hr className="border-blue-950" />
+        <hr className="border-white-950" />
         <ul className="w-full h-max rounded py-1 space-y-3 px-8 pb-3 pt-4">
-          <li className="flex items-center gap-4 text-black">
+          <li className="flex items-center gap-4">
             <svg
-              width="1.5em"
-              height="1.5em"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               color="currentColor"
-              className="h-5 w-5"
+              className="h-2 w-2"
             >
               <path
                 fill-rule="evenodd"
@@ -35,19 +33,17 @@ export default function OfficeCard({
                 fill="currentColor"
               ></path>
             </svg>
-            <p className="font-sans antialiased text-base text-current">
+            <p className="font-sans antialiased text-base text-xs">
               Region: {data?.address.region}
             </p>
           </li>
-          <li className="flex items-center gap-4 text-black">
+          <li className="flex items-center gap-4">
             <svg
-              width="1.5em"
-              height="1.5em"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               color="currentColor"
-              className="h-5 w-5"
+              className="h-2 w-2"
             >
               <path
                 fill-rule="evenodd"
@@ -56,19 +52,17 @@ export default function OfficeCard({
                 fill="currentColor"
               ></path>
             </svg>
-            <p className="font-sans antialiased text-base text-current">
+            <p className="font-sans antialiased text-base text-current text-xs">
               District: {data?.address.district}
             </p>
           </li>
-          <li className="flex items-center gap-4 text-black">
+          <li className="flex items-center gap-4">
             <svg
-              width="1.5em"
-              height="1.5em"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               color="currentColor"
-              className="h-5 w-5"
+              className="h-2 w-2"
             >
               <path
                 fill-rule="evenodd"
@@ -77,19 +71,17 @@ export default function OfficeCard({
                 fill="currentColor"
               ></path>
             </svg>
-            <p className="font-sans antialiased text-base text-current">
+            <p className="font-sans antialiased text-base text-current text-xs">
               Street: {data?.address.street}
             </p>
           </li>
-          <li className="flex items-center gap-4 text-black">
+          <li className="flex items-center gap-4">
             <svg
-              width="1.5em"
-              height="1.5em"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               color="currentColor"
-              className="h-5 w-5"
+              className="h-2 w-2"
             >
               <path
                 fill-rule="evenodd"
@@ -98,19 +90,17 @@ export default function OfficeCard({
                 fill="currentColor"
               ></path>
             </svg>
-            <p className="font-sans antialiased text-base text-current">
+            <p className="font-sans antialiased text-base text-current text-xs">
               Phone: {data?.phoneNumber}
             </p>
           </li>
-          <li className="flex items-center gap-4 text-black">
+          <li className="flex items-center gap-4">
             <svg
-              width="1.5em"
-              height="1.5em"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               color="currentColor"
-              className="h-5 w-5"
+              className="h-2 w-2"
             >
               <path
                 fill-rule="evenodd"
@@ -119,22 +109,20 @@ export default function OfficeCard({
                 fill="currentColor"
               ></path>
             </svg>
-            <p className="font-sans antialiased text-base text-current">
+            <p className="font-sans antialiased text-base text-current text-xs">
               Email: {data?.email}
             </p>
           </li>
         </ul>
         <hr className="border-blue-950" />
         <ul className="w-full h-max rounded py-1 space-y-3  px-8 pb-3 pt-4">
-          <li className="flex items-center gap-2 text-black">
+          <li className="flex items-center gap-2">
             <svg
-              width="1.5em"
-              height="1.5em"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               color="currentColor"
-              className="h-5 w-5"
+              className="h-2 w-2"
             >
               <path
                 fill-rule="evenodd"
@@ -143,19 +131,17 @@ export default function OfficeCard({
                 fill="currentColor"
               ></path>
             </svg>
-            <p className="font-sans antialiased text-base text-current">
+            <p className="font-sans antialiased text-base text-current text-xs">
               Manager Name: {data?.manager.name}
             </p>
           </li>
-          <li className="flex items-center gap-4 text-black">
+          <li className="flex items-center gap-4">
             <svg
-              width="1.5em"
-              height="1.5em"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               color="currentColor"
-              className="h-5 w-5"
+              className="h-2 w-2"
             >
               <path
                 fill-rule="evenodd"
@@ -164,19 +150,17 @@ export default function OfficeCard({
                 fill="currentColor"
               ></path>
             </svg>
-            <p className="font-sans antialiased text-base text-current">
+            <p className="font-sans antialiased text-base text-current text-xs">
               Manager Email: {data?.manager.email}
             </p>
           </li>
-          <li className="flex items-center gap-4 text-black">
+          <li className="flex items-center gap-4">
             <svg
-              width="1.5em"
-              height="1.5em"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               color="currentColor"
-              className="h-5 w-5"
+              className="h-2 w-2"
             >
               <path
                 fill-rule="evenodd"
@@ -185,7 +169,7 @@ export default function OfficeCard({
                 fill="currentColor"
               ></path>
             </svg>
-            <p className="font-sans antialiased text-base text-current">
+            <p className="font-sans antialiased text-base text-current text-xs">
               Manager Phone: {data?.manager.phone}
             </p>
           </li>
@@ -193,7 +177,7 @@ export default function OfficeCard({
         <div className="w-full px-3.5 pt-2 pb-3.5 rounded">
           <button
             onClick={() => setOfficeId(data?.id)}
-            className="w-full inline-flex items-center justify-center border font-sans font-medium text-sm py-2 px-4 rounded-lg shadow-sm hover:shadow-md bg-blue-500 text-white border-blue-200 hover:bg-blue-100"
+            className="w-full inline-flex items-center justify-center font-sans font-medium text-sm py-2 px-4 rounded-lg shadow-sm hover:shadow-md bg-gray-500 text-white hover:bg-gray-500"
           >
             Open Office
           </button>

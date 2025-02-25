@@ -1,8 +1,8 @@
 import React from "react";
 // import Header from "./Header";
 // import BusLayout from "./components/bus";
-import OfficeCard from "../components/OfficeCard";
 import { useState } from "react";
+import OfficeCard from "../components/OfficeCard";
 import FormData from "../form";
 interface DashboardProps {
   username: string;
@@ -19,9 +19,8 @@ const Dashboard: React.FC<DashboardProps> = ({ username, data, setShowForm }) =>
       <div className="">
         <div className="flex flex-col gap-4">
           <div>
-            <h2 className="text-xl font-bold mb-2">Welcome Back {username}</h2>
             {/* <HistoryTable /> */}
-            <div className="p-4 grid md:grid-cols-4 gap-4">
+            <div className="p-4 grid md:grid-cols-3 gap-4">
               {data.length === 0 && username ? (
                 <div className="flex bg-[#000000b0] absolute left-0 right-0 top-0 bottom-0 flex-col items-center justify-center gap-4 ">
                   <h1 className="mx-auto text-[34px] text-white font-boldyy">
